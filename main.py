@@ -1,4 +1,4 @@
-'''import os
+import os
 os.environ["IMAGEMAGICK_BINARY"] = r"C:\Program Files\ImageMagick-7.1.1-Q16\magick.exe"
 
 #from moviepy.editor import VideoFileClip, concatenate_videoclips, TextClip, CompositeVideoClip
@@ -50,51 +50,3 @@ print("Saving output...")
 final_video.write_videofile("output/highlights.mp4")
 
 print("Done! Highlights created.")
-'''
-'''
-
-
-
-from moviepy.editor import VideoFileClip, concatenate_videoclips
-import pandas as pd
-
-video = VideoFileClip("videos/full_match.mp4")
-events = pd.read_csv("data/events.csv")
-
-clips = []
-
-for i in range(len(events)):
-    time = events.loc[i, "time"]
-
-    start = max(0, time - 5)
-    end = time + 5
-
-    clip = video.subclip(start, end)
-    clips.append(clip)
-
-final = concatenate_videoclips(clips)
-final.write_videofile("output/highlights.mp4")
-
-print("DONE ✅")'''
-
-from moviepy.editor import VideoFileClip, concatenate_videoclips
-import pandas as pd
-
-video = VideoFileClip("videos/full_match.mp4")
-events = pd.read_csv("data/events.csv")
-
-clips = []
-
-for i in range(len(events)):
-    time = events.loc[i, "time"]
-
-    start = max(0, time - 5)
-    end = time + 5
-
-    clip = video.subclip(start, end)
-    clips.append(clip)
-
-final = concatenate_videoclips(clips)
-final.write_videofile("output/highlights.mp4")
-
-print("DONE ✅")
